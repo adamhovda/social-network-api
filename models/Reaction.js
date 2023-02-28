@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
-        reactionId: {type: Schema.Types.ObjectId, default: null },
+        reactionId: {type: Schema.Types.ObjectId },
         reactionBody: {type: String, required: true, max: 280},
         username: {type: String, required: true},
         // TODO Use a getter method to format the timestamp on query
@@ -10,6 +10,6 @@ const reactionSchema = new Schema(
     }
 )
 
-const Reaction = model('Reaction', reactionSchema);
+// const Reaction = model('Reaction', reactionSchema);
 
-module.exports = Reaction;
+module.exports = reactionSchema;
