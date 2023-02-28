@@ -26,9 +26,12 @@ module.exports = {
           { new: true }
           )
         })
-        .then((thought) => res.json(thought))
-  .catch((err) => res.status(500).json(err));
-  
+        .then((user) => {
+          !user 
+              ? res.status(404).json({ message: 'No user with this id!' })
+              : res.json({ message: 'Thought sucessfully created!' });
+        })
+        .catch((err) => res.status(500).json(err));
 },
 
   updateThoughts(req, res) {
@@ -97,7 +100,7 @@ module.exports = {
   ? res.status(404).json({
       message: 'Reaction created, but found no user with that ID',
     })
-  : res.json('Created the reaction 🎉')
+  : res.json('Deleted the reaction 🎉')
 )
 .catch((err) => {
 console.log(err);
