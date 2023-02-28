@@ -7,7 +7,14 @@ const userSchema = new Schema(
               return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v)}}},
         thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
         friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    }
+    },
+    {
+
+        toJSON: {
+          virtuals: true,
+    },
+    id: false,
+}
 )
 
 userSchema.virtual("friendCount").get(function () {

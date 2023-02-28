@@ -3,6 +3,9 @@
     "express.js": "^1.0.0",
     "mongoose": "^6.10.0"
   },
+  "scripts": {
+    "watch": "nodemon server.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.20"
   }

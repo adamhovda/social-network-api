@@ -1,18 +1,26 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require("./Reaction.js")
+const reactionSchema = require('./Reaction');
+
 
 
 const thoughtSchema = new Schema(
     {
-        thoughtText: {type: String, required: true, min: 1, max: 280 },
+        thoughtText: {type: String, required: true, 
+            min: 1, max: 280 
+        },
         //TODO Use a getter method to format the timestamp on query
         createdAt: {type: Date, default: Date.now },
         username: {type: String, required: true},
-        // TODO Array of nested documents created with the reactionSchema
         reaction: [reactionSchema]
 
-    }
+    },  
+    {
 
+        toJSON: {
+          virtuals: true,
+        },
+        id: false,
+    }
 )
 
 thoughtSchema.virtual("reactionCount").get(function () {
